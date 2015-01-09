@@ -1,10 +1,13 @@
 ApplicativeSwift
 =========================
 
-_ApplicativeSwift_ provides the operators for Swift to realize the __applicative style__ used in Haskell.
+_ApplicativeSwift_ provides the operators to realize the __applicative style__ for Swift, which is used in Haskell.
 
 ```swift
-let result: Int? = (+) <%> .Some(2) <*> .Some(3)
+let a: Int? = 2
+let b: Int? = 3
+
+let result: Int? = (+) <%> a <*> b // Optional(5)
 ```
 
 Purpose
@@ -29,14 +32,14 @@ let result: Int? = {
 }()
 ```
 
-In haskell, it can be done easily in the applicative style.
+In Haskell, it can be done easily in the applicative style.
 
 ```haskell
 // Haskell
 (+) <$> a <*> b
 ```
 
-_ApplicativeSwift_ provides such operators for Swift. Because the letter `$` cannot be used in operators in Swift, _ApplicativeSwift_ provides `<%>` instead of `<$>`. Therefore `a + b` can be calculated in the following way.
+_ApplicativeSwift_ provides such operators for Swift. Because the letter `$` cannot be used for operators in Swift, _ApplicativeSwift_ provides `<%>` instead of `<$>`. Therefore `a + b` can be calculated in the following way.
 
 ```swift
 // Swift
@@ -48,12 +51,20 @@ Usage
 
 ```swift
 // Optional
+let a: Int? = 2
+let b: Int? = 3
+let c: Int? = 5
+let d: Int? = 7
+let e: Int? = 11
+let f: Int? = 13
+let g: Int? = 17
+
 (+) <%> a <*> b
-foo <%> a <*> b <*> c
-bar <%> a <*> b <*> c <*> d
-baz <%> a <*> b <*> c <*> d <*> e
-qux <%> a <*> b <*> c <*> d <*> e <*> f
-quux <%> a <*> b <*> c <*> d <*> e <*> f <*> g
+sum3 <%> a <*> b <*> c
+sum4 <%> a <*> b <*> c <*> d
+sum5 <%> a <*> b <*> c <*> d <*> e
+sum6 <%> a <*> b <*> c <*> d <*> e <*> f
+sum7 <%> a <*> b <*> c <*> d <*> e <*> f <*> g
 
 // Array
 (*) <%> [1, 2] <*> [3, 4]
