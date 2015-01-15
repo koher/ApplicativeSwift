@@ -35,7 +35,7 @@ let result: Int? = {
 In Haskell, it can be done easily in the applicative style.
 
 ```haskell
-// Haskell
+-- Haskell
 (+) <$> a <*> b
 ```
 
