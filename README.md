@@ -74,10 +74,31 @@ curry(+)(2) <*> .Some(3)
 [curry(+), curry(*)] <*> [1, 2] <*> [3, 4]
 ```
 
-How to Install
+Installation
 -------------------------
 
-Put [Applicative.swift](Project/Applicative/Applicative.swift) into your project.
+### Carthage
+
+[_Carthage_](https://github.com/Carthage/Carthage) is available to install _ApplicativeSwift_. Add it to your _Cartfile_:
+
+```
+github "koher/ApplicativeSwift" >= 1.0.0
+```
+
+### Manually
+
+#### Embedded Framework
+
+For iOS 8 or later,
+
+1. Put [ApplicativeSwift.xcodeproj](ApplicativeSwift.xcodeproj) into your project in Xcode.
+2. Click the project icon and select the "General" tab.
+3. Add ApplicativeSwift.framework to "Embedded Binaries".
+4. `import ApplicativeSwift` in your swift files.
+
+#### Source
+
+For iOS 7, put [Applicative.swift](ApplicativeSwift/Applicative.swift) into your project.
 
 License
 -------------------------
