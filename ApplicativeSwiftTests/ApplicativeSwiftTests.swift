@@ -12,19 +12,19 @@ class ApplicativeSwiftTests: XCTestCase {
         let f: Int? = 32
         let g: Int? = 64
         
-        XCTAssert(((+) <%> a <*> b) == .Some(3))
-        XCTAssert((add3 <%> a <*> b <*> c) == .Some(7))
-        XCTAssert((add4 <%> a <*> b <*> c <*> d) == .Some(15))
-        XCTAssert((add5 <%> a <*> b <*> c <*> d <*> e) == .Some(31))
-        XCTAssert((add6 <%> a <*> b <*> c <*> d <*> e <*> f) == .Some(63))
-        XCTAssert((add7 <%> a <*> b <*> c <*> d <*> e <*> f <*> g) == .Some(127))
+        XCTAssert(((+) <^> a <*> b) == .Some(3))
+        XCTAssert((add3 <^> a <*> b <*> c) == .Some(7))
+        XCTAssert((add4 <^> a <*> b <*> c <*> d) == .Some(15))
+        XCTAssert((add5 <^> a <*> b <*> c <*> d <*> e) == .Some(31))
+        XCTAssert((add6 <^> a <*> b <*> c <*> d <*> e <*> f) == .Some(63))
+        XCTAssert((add7 <^> a <*> b <*> c <*> d <*> e <*> f <*> g) == .Some(127))
         
-        XCTAssert(((+) <%> nil <*> b) == nil)
-        XCTAssert((add3 <%> a <*> nil <*> c) == nil)
-        XCTAssert((add4 <%> a <*> b <*> nil <*> d) == nil)
-        XCTAssert((add5 <%> a <*> b <*> c <*> nil <*> e) == nil)
-        XCTAssert((add6 <%> a <*> b <*> c <*> d <*> nil <*> f) == nil)
-        XCTAssert((add7 <%> a <*> b <*> c <*> d <*> e <*> nil <*> g) == nil)
+        XCTAssert(((+) <^> nil <*> b) == nil)
+        XCTAssert((add3 <^> a <*> nil <*> c) == nil)
+        XCTAssert((add4 <^> a <*> b <*> nil <*> d) == nil)
+        XCTAssert((add5 <^> a <*> b <*> c <*> nil <*> e) == nil)
+        XCTAssert((add6 <^> a <*> b <*> c <*> d <*> nil <*> f) == nil)
+        XCTAssert((add7 <^> a <*> b <*> c <*> d <*> e <*> nil <*> g) == nil)
         
         XCTAssert((.Some(curry(+)) <*> a <*> b) == .Some(3)) // in Haskell: pure (+) <$> a <*> b
     }
@@ -33,8 +33,8 @@ class ApplicativeSwiftTests: XCTestCase {
         let a: [Int] = [1, 2]
         let b: [Int] = [3, 4]
         
-        XCTAssertEqual((*) <%> a <*> b, [3, 4, 6, 8])
-        XCTAssertEqual([curry(+), curry(*)] <*> a <*> b, [4, 5, 5, 6, 3, 4, 6, 8]) // in Haskell: [(+), (*)] <$> a <*> b
+        XCTAssertEqual((*) <^> a <*> b, [3, 4, 6, 8])
+        XCTAssertEqual([curry(+), curry(*)] <*> a <*> b, [4, 5, 5, 6, 3, 4, 6, 8]) // in Haskell: [(+), (*)] <*> a <*> b
     }
     
     func testOptionalInitializer() {
@@ -42,7 +42,7 @@ class ApplicativeSwiftTests: XCTestCase {
         let baz: Float = 3.0
         let qux: String = "5"
         
-        guard let foo = Foo.init <%> bar <*> baz <*> qux else {
+        guard let foo = Foo.init <^> bar <*> baz <*> qux else {
             XCTFail()
             return
         }

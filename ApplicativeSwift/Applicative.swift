@@ -1,5 +1,11 @@
-infix operator <*> { associativity left }
-infix operator <%> { associativity left }
+infix operator <*> {
+    precedence 130
+    associativity left
+}
+infix operator <^> {
+    precedence 130
+    associativity left
+}
 
 public func curry<T0, T1, R>(f: (T0, T1) -> R) -> T0 -> T1 -> R {
     return { t0 in { t1 in f(t0, t1) } }
@@ -72,68 +78,68 @@ public func <*><T0, T1>(lhs: (T0 -> T1)?, rhs: T0?) -> T1? {
     }
 }
 
-public func <%><T0, R>(lhs: T0 -> R, rhs: T0?) -> R? {
+public func <^><T0, R>(lhs: T0 -> R, rhs: T0?) -> R? {
     return rhs.map { lhs($0) }
 }
 
-public func <%><T0, T1, R>(lhs: (T0, T1) -> R, rhs: T0?) -> (T1 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, R>(lhs: (T0, T1) -> R, rhs: T0?) -> (T1 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, R>(lhs: (T0, T1, T2) -> R, rhs: T0?) -> (T1 -> T2 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, R>(lhs: (T0, T1, T2) -> R, rhs: T0?) -> (T1 -> T2 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, T3, R>(lhs: (T0, T1, T2, T3) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, T3, R>(lhs: (T0, T1, T2, T3) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, T3, T4, R>(lhs: (T0, T1, T2, T3, T4) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, T3, T4, R>(lhs: (T0, T1, T2, T3, T4) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, R>(lhs: (T0, T1, T2, T3, T4, T5) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, T3, T4, T5, R>(lhs: (T0, T1, T2, T3, T4, T5) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, R>(lhs: (T0, T1, T2, T3, T4, T5, T6) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, T3, T4, T5, T6, R>(lhs: (T0, T1, T2, T3, T4, T5, T6) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> T13 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> T13 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> T13 -> T14 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> T13 -> T14 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> T13 -> T14 -> T15 -> R)? {
-    return curry(lhs) <%> rhs
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15) -> R, rhs: T0?) -> (T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> T13 -> T14 -> T15 -> R)? {
+    return curry(lhs) <^> rhs
 }
 
 // Array
@@ -142,66 +148,66 @@ public func <*><T0, T1>(lhs: [T0 -> T1], rhs: [T0]) -> [T1] {
     return lhs.flatMap { f in rhs.map { t0 in f(t0) } }
 }
 
-public func <%><T0, R>(lhs: T0 -> R, rhs: [T0]) -> [R] {
+public func <^><T0, R>(lhs: T0 -> R, rhs: [T0]) -> [R] {
     return rhs.map { lhs($0) }
 }
 
-public func <%><T0, T1, R>(lhs: (T0, T1) -> R, rhs: [T0]) -> [T1 -> R] {
+public func <^><T0, T1, R>(lhs: (T0, T1) -> R, rhs: [T0]) -> [T1 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, R>(lhs: (T0, T1, T2) -> R, rhs: [T0]) -> [T1 -> T2 -> R] {
+public func <^><T0, T1, T2, R>(lhs: (T0, T1, T2) -> R, rhs: [T0]) -> [T1 -> T2 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, T3, R>(lhs: (T0, T1, T2, T3) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> R] {
+public func <^><T0, T1, T2, T3, R>(lhs: (T0, T1, T2, T3) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, T3, T4, R>(lhs: (T0, T1, T2, T3, T4) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> R] {
+public func <^><T0, T1, T2, T3, T4, R>(lhs: (T0, T1, T2, T3, T4) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, R>(lhs: (T0, T1, T2, T3, T4, T5) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> R] {
+public func <^><T0, T1, T2, T3, T4, T5, R>(lhs: (T0, T1, T2, T3, T4, T5) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, R>(lhs: (T0, T1, T2, T3, T4, T5, T6) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> R] {
+public func <^><T0, T1, T2, T3, T4, T5, T6, R>(lhs: (T0, T1, T2, T3, T4, T5, T6) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> R] {
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> R] {
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> R] {
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> R] {
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> R] {
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> R] {
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> T13 -> R] {
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> T13 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> T13 -> T14 -> R] {
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> T13 -> T14 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
 
-public func <%><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> T13 -> T14 -> T15 -> R] {
+public func <^><T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, R>(lhs: (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15) -> R, rhs: [T0]) -> [T1 -> T2 -> T3 -> T4 -> T5 -> T6 -> T7 -> T8 -> T9 -> T10 -> T11 -> T12 -> T13 -> T14 -> T15 -> R] {
     return rhs.map { curry(lhs)($0) }
 }
