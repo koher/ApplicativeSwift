@@ -7,7 +7,7 @@ _ApplicativeSwift_ provides the operators to realize the __applicative style__ f
 let a: Int? = 2
 let b: Int? = 3
 
-let result: Int? = (+) <%> a <*> b // Optional(5)
+let result: Int? = (+) <^> a <*> b // Optional(5)
 ```
 
 Purpose
@@ -39,11 +39,11 @@ In Haskell, it can be done easily in the applicative style.
 (+) <$> a <*> b
 ```
 
-_ApplicativeSwift_ provides such operators for Swift. Because the letter `$` cannot be used for operators in Swift, _ApplicativeSwift_ provides `<%>` instead of `<$>`. Therefore `a + b` can be calculated in the following way.
+_ApplicativeSwift_ provides such operators for Swift. Because the letter `$` cannot be used for operators in Swift, _ApplicativeSwift_ provides `<^>` instead of `<$>`. Therefore `a + b` can be calculated in the following way.
 
 ```swift
 // Swift
-(+) <%> a <*> b
+(+) <^> a <*> b
 ```
 
 Usage
@@ -59,15 +59,15 @@ let e: Int? = 11
 let f: Int? = 13
 let g: Int? = 17
 
-(+) <%> a <*> b
-sum3 <%> a <*> b <*> c
-sum4 <%> a <*> b <*> c <*> d
-sum5 <%> a <*> b <*> c <*> d <*> e
-sum6 <%> a <*> b <*> c <*> d <*> e <*> f
-sum7 <%> a <*> b <*> c <*> d <*> e <*> f <*> g
+(+) <^> a <*> b
+sum3 <^> a <*> b <*> c
+sum4 <^> a <*> b <*> c <*> d
+sum5 <^> a <*> b <*> c <*> d <*> e
+sum6 <^> a <*> b <*> c <*> d <*> e <*> f
+sum7 <^> a <*> b <*> c <*> d <*> e <*> f <*> g
 
 // Array
-(*) <%> [1, 2] <*> [3, 4]
+(*) <^> [1, 2] <*> [3, 4]
 
 // Currying
 curry(+)(2) <*> .Some(3)
@@ -82,7 +82,7 @@ Installation
 [_Carthage_](https://github.com/Carthage/Carthage) is available to install _ApplicativeSwift_. Add it to your _Cartfile_:
 
 ```
-github "koher/ApplicativeSwift" >= 1.0.0
+github "koher/ApplicativeSwift" ~> 2.0.0
 ```
 
 ### Manually
